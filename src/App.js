@@ -14,7 +14,9 @@ class App extends Component {
     // make github request
     const res = await axios.get("https://api.github.com/users");
 
-    this.setState({ user: res.data, loading: false });
+    console.log(res.data);
+
+    this.setState({ users: res.data.slice(0, 6), loading: false });
   }
 
   render() {
