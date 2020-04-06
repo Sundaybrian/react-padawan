@@ -3,6 +3,7 @@ import React, { Component } from "react";
 export class UserItemComponent extends Component {
   render() {
     const { login, avatar_url, html_url } = this.props.user;
+
     return (
       <div className="card text-center col-md-4 ">
         <img src={avatar_url} className="card-img-top" alt="" />
