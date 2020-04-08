@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 export const Spinner = () => {
   return (
-    <div>
+    <Fragment>
       {/* to be a loading spinner */}
-      Loading Users...
-    </div>
+      Loading Users...please wait
+    </Fragment>
   );
 };
 

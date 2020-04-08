@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import UserItemComponent from "./UserItemComponent";
 import Spinner from "../layouts/Spinner";
 
