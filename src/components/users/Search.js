@@ -16,8 +16,8 @@ export class Search extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
+      <div className="mb-3">
+        <form onSubmit={this.onSubmit.bind(this)}>
           <div className="form-group">
             <input
               type="text"
@@ -25,10 +25,10 @@ export class Search extends Component {
               className="form-control"
               name="text"
               value={this.state.text}
-              onChange={this.onChange}
+              onChange={this.onChange.bind(this)}
             />
           </div>
-          <button type="submit" className="btn btn-dark">
+          <button type="submit" className="btn btn-dark btn-block">
             Search
           </button>
         </form>

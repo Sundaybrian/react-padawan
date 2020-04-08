@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import NavbarComponent from "../src/components/layouts/NavbarComponent";
 import UsersComponent from "./components/users/UsersComponent";
+import Search from "./components/users/Search";
 import axios from "axios";
 import "./App.css";
 
@@ -24,6 +25,7 @@ class App extends Component {
       <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
+          <Search />
           <UsersComponent
             loading={this.state.loading}
             users={this.state.users}
