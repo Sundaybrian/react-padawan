@@ -39,7 +39,11 @@ class App extends Component {
       <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
-          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={this.state.users.length > 0 ? true : false}
+          />
           <UsersComponent
             loading={this.state.loading}
             users={this.state.users}

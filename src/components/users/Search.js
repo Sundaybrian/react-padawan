@@ -41,12 +41,15 @@ export class Search extends Component {
             Search
           </button>
         </form>
-        <button
-          className="btn btn-light btn-block"
-          onClick={this.props.clearUsers}
-        >
-          Clear
-        </button>
+        {/* if showclear is true render the clear button */}
+        {this.props.showClear && (
+          <button
+            className="btn btn-light btn-block"
+            onClick={this.props.clearUsers}
+          >
+            Clear
+          </button>
+        )}
       </div>
     );
   }
