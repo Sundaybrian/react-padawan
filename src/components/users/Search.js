@@ -16,7 +16,7 @@ export class Search extends Component {
     e.preventDefault();
 
     if (this.state.text == "") {
-      this.props.showAlert("Please enter something", "light");
+      this.props.showAlert("Please enter something", "info");
     } else {
       // passing up the search value to the parent
       this.props.searchUsers(this.state.text);
