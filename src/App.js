@@ -20,12 +20,22 @@ class App extends Component {
     this.setState({ users: res.data.slice(0, 6), loading: false });
   }
 
+  searchUsers = async (text) => {
+    this.setState({ loading: true });
+
+    const res = await axios.get(
+      `https://api.github.com/search/users?q=${text}`
+    );
+
+    this.setState({ users: res.data.items, loading: false });
+  };
+
   render() {
     return (
       <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
-          <Search />
+          <Search searchUsers={this.searchUsers} />
           <UsersComponent
             loading={this.state.loading}
             users={this.state.users}
