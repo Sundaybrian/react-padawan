@@ -30,12 +30,16 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false });
   };
 
+  clearUsers = () => {
+    this.setState({ users: [], loading: false });
+  };
+
   render() {
     return (
       <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
-          <Search searchUsers={this.searchUsers} />
+          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} />
           <UsersComponent
             loading={this.state.loading}
             users={this.state.users}

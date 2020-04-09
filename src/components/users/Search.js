@@ -7,12 +7,16 @@ export class Search extends Component {
   };
 
   static propTypes = {
+    clearUsers: PropTypes.func.isRequired,
     searchUsers: PropTypes.func.isRequired,
   };
 
   onSubmit(e) {
     e.preventDefault();
+    // passing up the search value to the parent
     this.props.searchUsers(this.state.text);
+    // emptying the search box
+    this.setState({ text: "" });
   }
 
   onChange(e) {
@@ -37,6 +41,12 @@ export class Search extends Component {
             Search
           </button>
         </form>
+        <button
+          className="btn btn-light btn-block"
+          onClick={this.props.clearUsers}
+        >
+          Clear
+        </button>
       </div>
     );
   }
