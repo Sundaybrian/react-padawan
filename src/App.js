@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import NavbarComponent from "../src/components/layouts/NavbarComponent";
 import UsersComponent from "./components/users/UsersComponent";
 import Search from "./components/users/Search";
+import Alert from "./components/layouts/Alert";
 import axios from "axios";
 import "./App.css";
 
@@ -9,6 +10,7 @@ class App extends Component {
   state = {
     users: [],
     loading: true,
+    alert: null,
   };
 
   async componentDidMount() {
@@ -34,15 +36,22 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   };
 
+  showAlert = (msg, type) => {
+    // setting alert state
+    this.setState({ alert: { msg, type } });
+  };
+
   render() {
     return (
       <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
+          <Alert alert={this.state.alert} />
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={this.state.users.length > 0 ? true : false}
+            showAlert={this.showAlert}
           />
           <UsersComponent
             loading={this.state.loading}

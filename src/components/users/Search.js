@@ -14,10 +14,15 @@ export class Search extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // passing up the search value to the parent
-    this.props.searchUsers(this.state.text);
-    // emptying the search box
-    this.setState({ text: "" });
+
+    if (this.state.text == "") {
+      this.props.showAlert("Please enter something", "light");
+    } else {
+      // passing up the search value to the parent
+      this.props.searchUsers(this.state.text);
+      // emptying the search box
+      this.setState({ text: "" });
+    }
   }
 
   onChange(e) {
