@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "../src/components/layouts/NavbarComponent";
 import UsersComponent from "./components/users/UsersComponent";
+import User from "./components/users/User";
 import Search from "./components/users/Search";
 import Alert from "./components/layouts/Alert";
 import About from "./components/pages/About";
@@ -11,6 +12,7 @@ import "./App.css";
 class App extends Component {
   state = {
     users: [],
+    user: {},
     loading: true,
     alert: null,
   };
@@ -32,6 +34,15 @@ class App extends Component {
     );
 
     this.setState({ users: res.data.items, loading: false });
+  };
+
+  getUser = async (username) => {
+    // fetching a single user
+    this.setState({ loading: false });
+
+    const res = await axios.get(`https://api.github.com/users/${username}`);
+
+    this.setState({ user: res.data, loading: false });
   };
 
   clearUsers = () => {
@@ -73,6 +84,17 @@ class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/user/:login"
+                render={(props) => (
+                  <User
+                    user={this.state.user}
+                    getUser={this.getUser}
+                    {...props}
+                  />
+                )}
+              />
             </Switch>
           </section>
         </div>
