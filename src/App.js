@@ -90,6 +90,7 @@ class App extends Component {
                 render={(props) => (
                   <User
                     user={this.state.user}
+                    loading={this.state.loading}
                     getUser={this.getUser}
                     {...props}
                   />
