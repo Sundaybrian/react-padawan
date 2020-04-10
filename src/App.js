@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "../src/components/layouts/NavbarComponent";
 import UsersComponent from "./components/users/UsersComponent";
-import User from "./components/users/User";
+import User from "./components/users/User.js";
 import Search from "./components/users/Search";
 import Alert from "./components/layouts/Alert";
 import About from "./components/pages/About";

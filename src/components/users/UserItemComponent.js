@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const UserItemComponent = ({ user: { login, avatar_url, html_url } }) => {
   return (
@@ -7,13 +8,13 @@ const UserItemComponent = ({ user: { login, avatar_url, html_url } }) => {
       <img src={avatar_url} className="card-img-top" alt="" />
       <h3>{login}</h3>
       <div>
-        <a
-          href={html_url}
+        <Link
+          to={`/user/${login}`}
           rel="nooponer norefer"
           className="btn btn-primary btn-sm"
         >
           More
-        </a>
+        </Link>
       </div>
     </div>
   );
