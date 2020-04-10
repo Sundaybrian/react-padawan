@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import NavbarComponent from "../src/components/layouts/NavbarComponent";
 import UsersComponent from "./components/users/UsersComponent";
 import Search from "./components/users/Search";
@@ -46,23 +47,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Router>
+        <div className="App">
         <NavbarComponent title="Github Search" />
         <section className="container mt-2">
           <Alert alert={this.state.alert} />
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            showClear={this.state.users.length > 0 ? true : false}
-            showAlert={this.showAlert}
-          />
-          <UsersComponent
-            loading={this.state.loading}
-            users={this.state.users}
-          />
+          <Switch>
+            <Route exact path='/' render={ props => {
+              <Fragment>
+                <Search
+              searchUsers={this.searchUsers}
+              clearUsers={this.clearUsers}
+              showClear={this.state.users.length > 0 ? true : false}
+              showAlert={this.showAlert}
+            />
+            <UsersComponent
+              loading={this.state.loading}
+              users={this.state.users}
+              />
+              </Fragment>
+            }}/>
+          </Switch>    
         </section>
       </div>
     );
+      </Router>
   }
 }
 
